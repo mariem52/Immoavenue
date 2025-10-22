@@ -1,0 +1,459 @@
+/* ===== EXCLUSIVES SECTION ===== */
+.exclusives-section {
+  padding: 6rem 0;
+  background: #f8fafc;
+}
+
+.section-header-compass {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header-compass h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.section-header-compass p {
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 500px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+.exclusives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.exclusive-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.exclusive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.exclusive-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #dc2626;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.exclusive-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.exclusive-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exclusive-content {
+  padding: 1.5rem;
+}
+
+.exclusive-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.property-type {
+  margin-bottom: 0.75rem;
+}
+
+.type-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.property-address {
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.property-status-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-disponible {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-réservé {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-vendu {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.property-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e40af;
+}
+
+.exclusives-cta {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.exclusives-cta p {
+  margin-bottom: 1.5rem;
+  color: #6b7280;
+}
+
+/* ===== STATS SECTION ===== */
+.stats-section-compass {
+  padding: 4rem 0;
+  background: white;
+}
+
+.stats-grid-compass {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-item-compass {
+  padding: 2rem;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  color: #6b7280;
+  font-weight: 400;
+  font-size: 1.125rem;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services-section-compass {
+  padding: 6rem 0;
+  background: #f8fafc;
+}
+
+.services-grid-compass {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.service-card-compass {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.service-card-compass:hover {
+  transform: translateY(-4px);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-card-compass h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.service-card-compass p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.service-link {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.3s ease;
+}
+
+.service-link:hover {
+  gap: 1rem;
+}
+
+/* ===== FEATURED SECTION ===== */
+.featured-section-compass {
+  padding: 6rem 0;
+  background: white;
+}
+
+.featured-grid-compass {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section-compass {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  color: white;
+}
+
+.cta-content-compass {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-content-compass h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.cta-content-compass p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== RESPONSIVE HOME ===== */
+@media (max-width: 768px) {
+  .section-header-compass h2 {
+    font-size: 2rem;
+  }
+  
+  .stats-grid-compass,
+  .services-grid-compass {
+    grid-template-columns: 1fr;
+  }
+  
+  .exclusives-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-grid-compass {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .service-card-compass {
+    padding: 2rem 1.5rem;
+  }
+  
+  .property-status-price {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .exclusives-section,
+  .services-section-compass,
+  .featured-section-compass,
+  .cta-section-compass {
+    padding: 4rem 0;
+  }
+  
+  .section-header-compass h2 {
+    font-size: 1.75rem;
+  }
+  
+  .section-header-compass p {
+    font-size: 1rem;
+  }
+}
+/* ===== BOUTONS INNOVANTS POUR TOUTE LA PAGE ===== */
+
+/* Style cohérent pour tous les boutons */
+.container .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet de brillance pour tous les boutons */
+.container .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.container .btn:hover::before {
+  left: 100%;
+}
+
+.container .btn-primary {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: white;
+  box-shadow: 0 8px 25px rgba(30, 64, 175, 0.25);
+}
+
+.container .btn-primary:hover {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(30, 64, 175, 0.35);
+}
+
+.container .btn-secondary {
+  background: linear-gradient(135deg, #6b7280, #9ca3af);
+  color: white;
+  box-shadow: 0 8px 25px rgba(107, 114, 128, 0.25);
+}
+
+.container .btn-secondary:hover {
+  background: linear-gradient(135deg, #4b5563, #6b7280);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(107, 114, 128, 0.35);
+}
+
+.container .btn-outline {
+  background: transparent;
+  color: #1e40af;
+  border: 2px solid #1e40af;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.15);
+}
+
+.container .btn-outline:hover {
+  background: #1e40af;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+}
+
+.container .btn-large {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 18px;
+}
+
+/* Boutons dans les sections spécifiques */
+.service-link {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(30, 64, 175, 0.1);
+}
+
+.service-link:hover {
+  gap: 1rem;
+  background: rgba(30, 64, 175, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Coins arrondis pour toutes les cartes */
+.exclusive-card,
+.service-card-compass,
+.exclusives-cta {
+  border-radius: 20px !important;
+}
+
+.exclusive-card:hover,
+.service-card-compass:hover {
+  transform: translateY(-5px);
+  border-radius: 20px;
+}

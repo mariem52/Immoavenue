@@ -1,0 +1,11 @@
+.navbar{
+  background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50
+}
+.navbar .inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;gap:10px;align-items:center}
+.brand .logo{width:34px;height:34px;border-radius:8px;background:var(--brand-orange)}
+.brand .name{font-weight:800;color:var(--brand-blue)}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:var(--text);font-weight:600;opacity:.9}
+.nav a.active{color:var(--brand-blue)}
+.user{display:flex;gap:10px;align-items:center}

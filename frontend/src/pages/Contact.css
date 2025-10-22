@@ -1,0 +1,71 @@
+/* src/pages/Contact.css */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #f4f6f9, #e2e6f2); /* clair mais neutre pour ton thème */
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-box {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(54, 57, 133, 0.2); /* bleu #363985 subtil */
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(54, 57, 133, 0.3);
+}
+
+.contact-box h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #363985; /* bleu principal */
+}
+
+.contact-box textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 15px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-box textarea:focus {
+  border-color: #363985; /* bleu principal */
+}
+
+.contact-box button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #363985; /* bleu principal */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-box button:hover {
+  background-color: #F2320A; /* orange hover */
+  transform: scale(1.05);
+}
+
+.contact-box button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}

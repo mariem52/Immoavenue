@@ -1,0 +1,146 @@
+/* Layout général */
+.profile-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f8fc;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Sidebar */
+.profile-sidebar {
+  width: 250px;
+  background: #fff;
+  padding: 32px 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.sidebar-nav button {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #555;
+}
+
+.sidebar-nav button:hover {
+  background: #f0f4ff;
+  color: #006aff;
+}
+
+.sidebar-nav button.active {
+  background: #006aff;
+  color: #fff;
+}
+
+/* Contenu principal */
+.profile-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background: #f7f8fc;
+}
+
+/* Card pour les formulaires et sections */
+.form, .tab-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.form .field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.field input:focus {
+  border-color: #006aff;
+  box-shadow: 0 0 0 2px rgba(0,106,255,0.2);
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn.primary {
+  background: #006aff;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #0053cc;
+}
+
+/* Favoris / Réservations */
+.tab-card h3 {
+  margin-bottom: 12px;
+  color: #006aff;
+}
+
+.tab-card p {
+  color: #555;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .profile-page {
+    flex-direction: column;
+  }
+  .profile-sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 20px;
+    gap: 10px;
+  }
+  .sidebar-nav button {
+    flex: 1;
+    margin-bottom: 0;
+  }
+  .profile-content {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,4 @@
+.footer{
+  border-top:1px solid var(--border);padding:24px 0;background:#fff;color:var(--muted)
+}
+.footer .brand{color:var(--brand-blue);font-weight:800}

@@ -1,0 +1,88 @@
+.navbar {
+  background-color: #f9f9f9; /* Couleur claire */
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar .brand .logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.navbar .brand .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #363985; /* Bleu */
+}
+
+.navbar .nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .nav a {
+  text-decoration: none;
+  color: #363985;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar .nav a:hover {
+  color: #F2320A; /* Orange hover */
+}
+
+.navbar .user {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espacement entre icône, texte et bouton */
+  margin-left: 12px;
+}
+
+.navbar .welcome {
+  color: #363985;
+  font-weight: 500;
+}
+
+.navbar .profile-icon {
+  color: #363985;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navbar .profile-icon:hover {
+  color: #F2320A;
+}
+
+/* Bouton Se déconnecter simple */
+.btn.logout-btn {
+  background-color: #f1f1f1; /* Gris clair */
+  color: #363985; /* Bleu */
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.logout-btn:hover {
+  background-color: #eaeaea;
+}

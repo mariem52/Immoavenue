@@ -1,0 +1,27 @@
+@import "./variables.css";
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+  color:var(--text);
+  background:var(--bg);
+}
+a{color:inherit;text-decoration:none}
+.container{max-width:1180px;margin:0 auto;padding:0 16px}
+.section{padding:48px 0}
+h1,h2,h3{margin:0 0 12px}
+.btn{
+  padding:12px 18px;border-radius:10px;border:1px solid transparent;
+  background:var(--brand-blue);color:#fff;cursor:pointer;font-weight:600
+}
+.btn.secondary{background:#fff;color:var(--brand-blue);border-color:var(--brand-blue)}
+.btn.orange{background:var(--brand-orange)}
+.grid{display:grid;gap:18px}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid-3{grid-template-columns:1fr}}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)
+}
