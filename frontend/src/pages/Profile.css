@@ -1,146 +1,898 @@
-/* Layout général */
-.profile-page {
-  display: flex;
-  min-height: 100vh;
-  background: #f7f8fc;
-  font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
+/* Variables CSS */
+:root {
+  --primary: #3f5b83;
+  --primary-dark: #6f8dbb;
+  --primary-light: #e6f0ff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --white: #ffffff;
+  --border: #e9ecef;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+  --radius: 12px;
+  --radius-lg: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Sidebar */
-.profile-sidebar {
-  width: 250px;
-  background: #fff;
-  padding: 32px 20px;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+/* Reset et base */
+.profile-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Header du profil */
+.profile-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.user-avatar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.avatar-icon {
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.online-status {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  background: var(--success);
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-email {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0 0 16px 0;
+  font-weight: 400;
+}
+
+.user-badge {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.role-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.role-admin {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.role-chefprojet {
+  background: rgba(255, 193, 7, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.role-client {
+  background: rgba(40, 167, 69, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.member-since {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Container principal */
+.profile-container {
+  max-width: 1200px;
+  margin: -40px auto 40px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Sidebar moderne */
+.profile-sidebar {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  overflow: hidden;
+  height: fit-content;
+  position: sticky;
+  top: 40px;
+}
+
+.sidebar-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%);
+}
+
+.settings-icon {
+  color: var(--primary);
+  font-size: 1.2rem;
 }
 
 .sidebar-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #333;
-  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0;
 }
 
-.sidebar-nav button {
+.sidebar-nav {
+  padding: 16px 0;
+}
+
+.nav-item {
   width: 100%;
-  text-align: left;
-  padding: 12px 16px;
-  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
   border: none;
   background: transparent;
-  border-radius: 8px;
-  font-size: 15px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  color: #555;
+  transition: var(--transition);
+  position: relative;
+  text-align: left;
 }
 
-.sidebar-nav button:hover {
-  background: #f0f4ff;
-  color: #006aff;
+.nav-item:hover {
+  background: var(--primary-light);
 }
 
-.sidebar-nav button.active {
-  background: #006aff;
-  color: #fff;
+.nav-item.active {
+  background: var(--primary-light);
+  border-right: 3px solid var(--primary);
+}
+
+.nav-item.active .nav-label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-item.active .nav-icon {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  color: var(--secondary);
+  transition: var(--transition);
+  min-width: 24px;
+}
+
+.nav-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--dark);
+  transition: var(--transition);
+}
+
+.nav-description {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  transition: var(--transition);
+}
+
+.nav-indicator {
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.nav-item.active .nav-indicator {
+  opacity: 1;
+}
+
+/* Section sécurité */
+.security-section {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--light);
+}
+
+.security-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.security-icon {
+  color: var(--success);
+  font-size: 0.9rem;
+}
+
+.security-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.verified {
+  background: var(--success);
+}
+
+.status-dot.secure {
+  background: var(--warning);
 }
 
 /* Contenu principal */
 .profile-content {
-  flex: 1;
-  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  background: #f7f8fc;
+  gap: 24px;
 }
 
-/* Card pour les formulaires et sections */
-.form, .tab-card {
-  background: #fff;
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
+.content-header {
+  background: var(--white);
+  padding: 32px 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
 
-.form .field {
-  margin-bottom: 16px;
+.content-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 12px 0;
 }
 
-.field label {
+.content-subtitle {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.content-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ========================================================================== */
+/* STYLES POUR LES FORMULAIRES - CES STYLES DOIVENT ÊTRE APPLIQUÉS SUR TOUS LES ÉCRANS */
+/* ========================================================================== */
+
+/* Styles pour le formulaire de profil */
+.edit-profile-form {
+  padding: 40px;
+}
+
+.profile-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-section {
+  margin-bottom: 40px;
+}
+
+.form-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 24px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.section-icon {
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: 500;
-  color: #333;
+  color: var(--dark);
+  font-size: 0.95rem;
 }
 
-.field input {
+.input-container {
+  position: relative;
+}
+
+.form-input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
-  transition: all 0.2s ease;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background: var(--white);
+  transition: var(--transition);
+  box-sizing: border-box;
 }
 
-.field input:focus {
-  border-color: #006aff;
-  box-shadow: 0 0 0 2px rgba(0,106,255,0.2);
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(63, 91, 131, 0.1);
+  background: var(--white);
+}
+
+.form-input::placeholder {
+  color: #a0a4a8;
+}
+
+.input-help {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin: 8px 0 0 0;
+  line-height: 1.4;
+}
+
+/* Actions du formulaire */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
 }
 
 .btn {
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition);
+  text-decoration: none;
+  min-width: 140px;
+  justify-content: center;
 }
 
-.btn.primary {
-  background: #006aff;
-  color: #fff;
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
 }
 
-.btn.primary:hover {
-  background: #0053cc;
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(63, 91, 131, 0.3);
 }
 
-/* Favoris / Réservations */
-.tab-card h3 {
-  margin-bottom: 12px;
-  color: #006aff;
+.btn-secondary {
+  background: var(--light);
+  color: var(--secondary);
+  border: 1px solid var(--border);
 }
 
-.tab-card p {
-  color: #555;
+.btn-secondary:hover:not(:disabled) {
+  background: #e9ecef;
+  color: var(--dark);
 }
 
-/* Responsive */
-@media screen and (max-width: 900px) {
-  .profile-page {
-    flex-direction: column;
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-icon {
+  font-size: 0.9rem;
+}
+
+/* Styles pour ChangePasswordForm */
+.change-password-form {
+  padding: 40px;
+}
+
+.change-password-form .profile-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Styles pour Favorites et Reservations */
+.favorites-container,
+.reservations-container {
+  padding: 40px;
+}
+
+.favorites-container h3,
+.reservations-container h3 {
+  margin-bottom: 24px;
+  color: var(--dark);
+  font-size: 1.5rem;
+}
+
+/* ========================================================================== */
+/* STYLES RESPONSIVE - CES STYLES S'APPLIQUENT SEULEMENT SUR PETITS ÉCRANS */
+/* ========================================================================== */
+
+@media (max-width: 1024px) {
+  .profile-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: -60px;
   }
+  
   .profile-sidebar {
+    position: static;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .user-badge {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 0 20px;
+  }
+  
+  .header-content {
+    padding: 0 20px;
+  }
+  
+  .user-name {
+    font-size: 2rem;
+  }
+  
+  .content-header {
+    padding: 20px 24px;
+  }
+  
+  .content-title {
+    font-size: 1.5rem;
+  }
+  
+  .sidebar-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 16px;
+  }
+  
+  .nav-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px 12px;
+    border-radius: var(--radius);
+    background: var(--light);
+  }
+  
+  .nav-item.active {
+    border-right: none;
+    border-bottom: 3px solid var(--primary);
+  }
+  
+  .nav-description {
+    display: none;
+  }
+  
+  /* Responsive pour les formulaires */
+  .edit-profile-form,
+  .change-password-form,
+  .favorites-container,
+  .reservations-container {
+    padding: 24px;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .btn {
     width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-nav {
+    grid-template-columns: 1fr;
+  }
+  
+  .user-name {
+    font-size: 1.75rem;
+  }
+  
+  .profile-header {
+    padding: 30px 0;
+  }
+  
+  /* Responsive pour les formulaires sur très petits écrans */
+  .edit-profile-form,
+  .change-password-form,
+  .favorites-container,
+  .reservations-container {
     padding: 20px;
-    gap: 10px;
   }
-  .sidebar-nav button {
-    flex: 1;
-    margin-bottom: 0;
+  
+  .form-input {
+    padding: 12px 14px;
   }
-  .profile-content {
+  
+  .content-header {
+    padding: 16px 20px;
+  }
+  
+  .content-title {
+    font-size: 1.3rem;
+  }
+}
+/* Styles spécifiques pour ChangePasswordForm */
+.change-password-form {
+  padding: 40px;
+}
+
+.change-password-form .profile-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.label-icon {
+  margin-right: 8px;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.security-notice {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: #fff8e6;
+  border: 1px solid #ffeaa7;
+  border-radius: var(--radius);
+  margin: 24px 0;
+}
+
+.notice-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.notice-content {
+  font-size: 0.9rem;
+  color: #856404;
+  line-height: 1.4;
+}
+
+.notice-content strong {
+  color: #664d03;
+}
+
+/* Indicateur de force du mot de passe (optionnel) */
+.password-strength {
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+
+.strength-bar {
+  height: 4px;
+  background: #e9ecef;
+  border-radius: 2px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.strength-weak {
+  background: var(--danger);
+  width: 33%;
+}
+
+.strength-medium {
+  background: var(--warning);
+  width: 66%;
+}
+
+.strength-strong {
+  background: var(--success);
+  width: 100%;
+}
+
+/* Responsive pour ChangePasswordForm */
+@media (max-width: 768px) {
+  .change-password-form {
+    padding: 24px;
+  }
+  
+  .security-notice {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .change-password-form {
     padding: 20px;
   }
+}
+/* Version ultra-compacte */
+.edit-profile-form.ultra-compact {
+  padding: 15px;
+}
+
+.edit-profile-form.ultra-compact .profile-form {
+  max-width: 450px;
+}
+
+.edit-profile-form.ultra-compact .form-section {
+  margin-bottom: 15px;
+}
+
+.edit-profile-form.ultra-compact .section-title {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.edit-profile-form.ultra-compact .form-grid {
+  gap: 8px;
+}
+
+.edit-profile-form.ultra-compact .form-group {
+  margin-bottom: 12px;
+}
+
+.edit-profile-form.ultra-compact .form-input {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+}
+
+.edit-profile-form.ultra-compact .form-actions {
+  margin-top: 15px;
+  padding-top: 12px;
+}
+
+.edit-profile-form.ultra-compact .btn {
+  padding: 8px 16px;
+  min-width: 100px;
+  font-size: 0.85rem;
+}
+
+.content-header.ultra-compact {
+  padding: 15px 25px;
+}
+
+.content-header.ultra-compact .content-title {
+  font-size: 1.2rem;
+}
+
+.content-header.ultra-compact .content-subtitle {
+  font-size: 0.85rem;
+}
+/* Réduire la carte blanche entière */
+.content-card.compact-view {
+  padding: 0;
+  border-radius: 10px;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact {
+  padding: 15px;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .profile-form {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .form-section {
+  margin-bottom: 15px;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .section-title {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .form-grid {
+  gap: 8px;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .form-group {
+  margin-bottom: 12px;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .form-input {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .form-actions {
+  margin-top: 15px;
+  padding-top: 12px;
+}
+
+.content-card.compact-view .edit-profile-form.ultra-compact .btn {
+  padding: 8px 16px;
+  min-width: 100px;
+  font-size: 0.85rem;
+}
+
+/* Réduire aussi le header au-dessus de la carte */
+.content-header.ultra-compact + .content-card.compact-view {
+  margin-top: 10px;
+}
+/* Styles compact pour ChangePasswordForm */
+.change-password-form.compact {
+  padding: 20px;
+}
+
+.change-password-form.compact .profile-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.change-password-form.compact .form-section {
+  margin-bottom: 20px;
+}
+
+.change-password-form.compact .section-title {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.change-password-form.compact .form-group {
+  margin-bottom: 16px;
+}
+
+.change-password-form.compact .form-input {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.change-password-form.compact .input-help {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+/* Réduire l'espace avant le message d'avertissement */
+.change-password-form.compact .security-notice {
+  margin: 16px 0;
+  padding: 12px;
+}
+
+.change-password-form.compact .form-actions {
+  margin-top: 20px;
+  padding-top: 16px;
+}
+
+.change-password-form.compact .btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
 }

@@ -1,11 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import heroImage from "../assets/logIn.jpg";
 import "./Hero.css";
 
 export default function Hero() {
-  const { user } = useAuth();
 
   return (
     <section className="hero-compass">
@@ -46,31 +43,13 @@ export default function Hero() {
             <div className="hero-right">
               <div className="hero-text-right">
                 <h1 className="hero-title">
-                  Trouvez Votre
-                  <span className="hero-highlight"> Propriété Idéale</span>
+                  Explorez vos 
+                  <span className="hero-highlight"> projets immobiliers  </span>
+                 où que vous soyez
                 </h1>
-                <p className="hero-subtitle">
-                  Découvrez des biens immobiliers exceptionnels adaptés à votre style de vie
-                </p>
               </div>
 
-              {/* CTA Principal - BOUTONS LARGES */}
-              <div className="hero-actions-wide">
-                {user ? (
-                  <Link to="/projects" className="btn btn-super-wide btn-primary">
-                    Explorer les projets
-                  </Link>
-                ) : (
-                  <div className="wide-auth-actions">
-                    <Link to="/register" className="btn btn-super-wide btn-primary">
-                      Créer un compte
-                    </Link>
-                    <Link to="/login" className="btn btn-super-wide btn-secondary">
-                      Se connecter
-                    </Link>
-                  </div>
-                )}
-              </div>
+             
             </div>
           </div>
         </div>

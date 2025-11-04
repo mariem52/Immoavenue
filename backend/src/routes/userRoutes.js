@@ -7,6 +7,7 @@ const {
   deleteUser,
   verifyUser,
   updateProfile,
+  updateUser, 
   changePassword,
   forgotPassword,
   resetPassword,
@@ -27,7 +28,7 @@ router.put("/change-password", verifyToken, changePassword);
 // Users (Admin)
 router.get("/", verifyToken, listUsers);
 router.delete("/:id", verifyToken, deleteUser);
-
+router.put("/:id", verifyToken, updateUser);
 // Password reset
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:token", resetPassword);

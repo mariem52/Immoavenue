@@ -1,8 +1,8 @@
-// src/components/ChangePasswordForm.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import { FaKey, FaLock, FaShieldAlt, FaSave } from "react-icons/fa";
 
 export default function ChangePasswordForm() {
   const { user, notify, logout } = useAuth();
@@ -39,38 +39,90 @@ export default function ChangePasswordForm() {
   };
 
   return (
-    <form className="form" onSubmit={onSubmit}>
-      <h3 style={{ marginBottom: 20 }}>Changer le mot de passe 🔒</h3>
-      <div className="field">
-        <label>Ancien mot de passe</label>
-        <input
-          type="password"
-          value={oldPassword}
-          onChange={(e) => setOldPassword(e.target.value)}
-          required
-        />
-      </div>
-      <div className="field">
-        <label>Nouveau mot de passe</label>
-        <input
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          required
-        />
-      </div>
-      <div className="field">
-        <label>Confirmer le mot de passe</label>
-        <input
-          type="password"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
-          required
-        />
-      </div>
-      <button className="btn" type="submit" disabled={loading}>
-        {loading ? "Changement..." : "Changer"}
-      </button>
-    </form>
+    <div className="change-password-form">
+      <form className="profile-form" onSubmit={onSubmit}>
+        <div className="form-section">
+          <h3 className="section-title">
+            <FaShieldAlt className="section-icon" />
+            Sécurité du compte
+          </h3>
+          
+          <div className="form-group">
+            <label htmlFor="oldPassword" className="form-label">
+              <FaLock className="label-icon" />
+              Ancien mot de passe *
+            </label>
+            <div className="input-container">
+              <input
+                type="password"
+                id="oldPassword"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+                required
+                className="form-input"
+                placeholder="Entrez votre mot de passe actuel"
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="newPassword" className="form-label">
+              <FaKey className="label-icon" />
+              Nouveau mot de passe *
+            </label>
+            <div className="input-container">
+              <input
+                type="password"
+                id="newPassword"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                required
+                className="form-input"
+                placeholder="Choisissez un nouveau mot de passe"
+              />
+            </div>
+            <p className="input-help">
+              Utilisez au moins 8 caractères avec des lettres, chiffres et symboles
+            </p>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="confirmPassword" className="form-label">
+              <FaShieldAlt className="label-icon" />
+              Confirmer le mot de passe *
+            </label>
+            <div className="input-container">
+              <input
+                type="password"
+                id="confirmPassword"
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                required
+                className="form-input"
+                placeholder="Confirmez votre nouveau mot de passe"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="security-notice">
+          <div className="notice-icon">⚠️</div>
+          <div className="notice-content">
+            <strong>Important :</strong> Après le changement de mot de passe, vous serez déconnecté et devrez vous reconnecter avec votre nouveau mot de passe.
+          </div>
+        </div>
+
+        <div className="form-actions">
+          <button 
+            className="btn btn-primary" 
+            type="submit" 
+            disabled={loading}
+          >
+            <FaSave className="btn-icon" />
+            {loading ? "Changement en cours..." : "Changer le mot de passe"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

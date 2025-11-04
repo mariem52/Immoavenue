@@ -253,5 +253,46 @@ exports.getNewUsersCount = async (req, res) => {
   }
 };
 
+// 📌 Update user (Admin)
+exports.updateUser = async (req, res) => {
+  try {
+    const { nom, prenom, email, role } = req.body;
+    const userId = req.params.id;
+
+    // Vérifier si l'utilisateur existe
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Utilisateur introuvable" });
+    }
+
+    // Vérifier si l'email est déjà utilisé par un autre utilisateur
+    if (email && email !== user.email) {
+      const emailExists = await User.findOne({ email, _id: { $ne: userId } });
+      if (emailExists) {
+        return res.status(400).json({ message: "Cet email est déjà utilisé par un autre utilisateur" });
+      }
+    }
+
+    // Mettre à jour les champs
+    if (nom) user.nom = nom;
+    if (prenom) user.prenom = prenom;
+    if (email) user.email = email;
+    if (role) user.role = role;
+
+    await user.save();
+
+    // Retourner l'utilisateur mis à jour sans le mot de passe
+    const updatedUser = await User.findById(userId).select("-motDePasse");
+    
+    res.json({
+      message: "Utilisateur mis à jour avec succès ✅",
+      user: updatedUser
+    });
+  } catch (err) {
+    console.error("updateUser error:", err);
+    res.status(500).json({ message: "Erreur serveur lors de la mise à jour", error: err.message });
+  }
+};
+
 // 🔹 EXPORT token pour authRoutes
 exports.generateToken = generateToken;

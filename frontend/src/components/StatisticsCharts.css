@@ -1,0 +1,319 @@
+/* Statistics Charts - Styles Corrigés */
+.statistics-charts {
+  margin-top: 30px;
+  padding: 20px;
+  width: 100%;
+}
+
+.statistics-charts h3 {
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 2px solid #e1e8ed;
+  padding-bottom: 10px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.chart-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e8ed;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.chart-card h4 {
+  margin-bottom: 20px;
+  color: #34495e;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Graphiques à barres verticales */
+.bar-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.project-name {
+  font-weight: 500;
+  color: #2c3e50;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.bar-value {
+  color: #7f8c8d;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.bar-track {
+  height: 25px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e9ecef;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.8s ease;
+  min-width: 5px;
+  position: relative;
+}
+
+.bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.2) 0%, 
+    rgba(255,255,255,0.4) 50%, 
+    rgba(255,255,255,0.2) 100%);
+}
+
+/* Graphiques à barres horizontales (pour les pourcentages) */
+.horizontal-bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 300px;
+  padding: 10px;
+}
+
+.horizontal-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bar-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.bar-label {
+  font-weight: 500;
+  color: #2c3e50;
+  flex: 1;
+}
+
+.bar-percentage {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 50px;
+  text-align: right;
+}
+
+.horizontal-bar-track {
+  height: 35px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e9ecef;
+}
+
+.horizontal-bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.8s ease;
+  min-width: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.bar-count {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.horizontal-bar-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.2) 0%, 
+    rgba(255,255,255,0.3) 50%, 
+    rgba(255,255,255,0.2) 100%);
+  border-radius: 8px;
+}
+
+/* Cartes de résumé */
+.stats-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 120px;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.summary-card.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.summary-card.success {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+}
+
+.summary-card.info {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #2c3e50;
+}
+
+.summary-card.warning {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #2c3e50;
+}
+
+.summary-icon {
+  font-size: 2.5rem;
+  margin-right: 20px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.summary-content {
+  flex: 1;
+}
+
+.summary-content h5 {
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.summary-content p {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.summary-content span {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  display: block;
+}
+
+.no-data {
+  text-align: center;
+  padding: 60px 40px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  color: #6c757d;
+  border: 2px dashed #dee2e6;
+}
+
+.no-data p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-card {
+    padding: 15px;
+  }
+  
+  .stats-summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .summary-card {
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .summary-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-summary-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .bar-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .bar-percentage {
+    text-align: left;
+  }
+}

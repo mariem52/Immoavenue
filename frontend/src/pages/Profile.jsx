@@ -1,10 +1,18 @@
-// src/pages/Profile.jsx
 import React, { useState } from "react";
 import ChangePasswordForm from "../components/ChangePasswordForm";
 import EditProfileForm from "../components/EditProfileForm";
 import Favorites from "./Favorites";
 import Reservations from "./Reservations";
 import { useAuth } from "../context/AuthContext";
+import {
+  FaUserEdit,
+  FaKey,
+  FaHeart,
+  FaCalendarAlt,
+  FaUserCircle,
+  FaCog,
+  FaShieldAlt
+} from "react-icons/fa";
 import "./Profile.css";
 
 export default function Profile() {
@@ -13,50 +21,123 @@ export default function Profile() {
 
   if (!user) return <p>Chargement...</p>;
 
+  const menuItems = [
+    {
+      id: "edit",
+      label: "Modifier le profil",
+      icon: <FaUserEdit />,
+      description: "Gérez vos informations personnelles"
+    },
+    {
+      id: "password",
+      label: "Sécurité",
+      icon: <FaKey />,
+      description: "Changez votre mot de passe"
+    },
+    ...(user.role === "Client" ? [
+      {
+        id: "favorites",
+        label: "Mes favoris",
+        icon: <FaHeart />,
+        description: "Vos propriétés préférées"
+      },
+      {
+        id: "reservations",
+        label: "Réservations",
+        icon: <FaCalendarAlt />,
+        description: "Vos visites planifiées"
+      }
+    ] : [])
+  ];
+
   return (
     <div className="profile-page">
-      {/* Sidebar */}
-      <aside className="profile-sidebar">
-        <h3 className="sidebar-title">Mon compte</h3>
-        <nav className="sidebar-nav">
-          <button
-            className={activeTab === "edit" ? "active" : ""}
-            onClick={() => setActiveTab("edit")}
-          >
-            Modifier profil
-          </button>
-          <button
-            className={activeTab === "password" ? "active" : ""}
-            onClick={() => setActiveTab("password")}
-          >
-            Changer mot de passe
-          </button>
-          {user.role === "Client" && (
-            <>
-              <button
-                className={activeTab === "favorites" ? "active" : ""}
-                onClick={() => setActiveTab("favorites")}
-              >
-                Mes favoris
-              </button>
-              <button
-                className={activeTab === "reservations" ? "active" : ""}
-                onClick={() => setActiveTab("reservations")}
-              >
-                Mes réservations
-              </button>
-            </>
-          )}
-        </nav>
-      </aside>
+      {/* Header avec informations utilisateur */}
+      <div className="profile-header">
+        <div className="header-content">
+          <div className="user-avatar">
+            <FaUserCircle className="avatar-icon" />
+            <div className="online-status"></div>
+          </div>
+          <div className="user-info">
+            <h1 className="user-name">{user.prenom} {user.nom}</h1>
+            <p className="user-email">{user.email}</p>
+            <div className="user-badge">
+              <span className={`role-badge role-${user.role.toLowerCase()}`}>
+                {user.role}
+              </span>
+              <span className="member-since">
+                Membre depuis {new Date().getFullYear()}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      {/* Contenu */}
-      <main className="profile-content">
-        {activeTab === "edit" && <EditProfileForm />}
-        {activeTab === "password" && <ChangePasswordForm />}
-        {activeTab === "favorites" && <Favorites />}
-        {activeTab === "reservations" && <Reservations />}
-      </main>
+      <div className="profile-container">
+        {/* Sidebar moderne */}
+        <aside className="profile-sidebar">
+          <div className="sidebar-header">
+            <FaCog className="settings-icon" />
+            <h3 className="sidebar-title">Paramètres du compte</h3>
+          </div>
+          
+          <nav className="sidebar-nav">
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                className={`nav-item ${activeTab === item.id ? "active" : ""}`}
+                onClick={() => setActiveTab(item.id)}
+              >
+                <div className="nav-icon">{item.icon}</div>
+                <div className="nav-content">
+                  <span className="nav-label">{item.label}</span>
+                  <span className="nav-description">{item.description}</span>
+                </div>
+                <div className="nav-indicator"></div>
+              </button>
+            ))}
+          </nav>
+
+          {/* Section sécurité */}
+          <div className="security-section">
+            <div className="security-header">
+              <FaShieldAlt className="security-icon" />
+              <span>Sécurité du compte</span>
+            </div>
+            <div className="security-status">
+              <div className="status-item">
+                <div className="status-dot verified"></div>
+                <span>Email vérifié</span>
+              </div>
+              <div className="status-item">
+                <div className="status-dot secure"></div>
+                <span>Mot de passe fort</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Contenu principal */}
+        <main className="profile-content">
+
+
+<div className="content-card compact-view">
+  {activeTab === "edit" && (
+    <div className="edit-profile-form ultra-compact">
+      <EditProfileForm />
+    </div>
+  )}
+  {activeTab === "password" && (
+    <div className="change-password-form compact">
+      <ChangePasswordForm />
+    </div>
+  )}
+  {activeTab === "favorites" && <Favorites />}
+  {activeTab === "reservations" && <Reservations />}
+</div>
+        </main>
+      </div>
     </div>
   );
 }

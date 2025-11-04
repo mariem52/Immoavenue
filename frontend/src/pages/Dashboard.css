@@ -272,4 +272,43 @@
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
   }
+  /* Styles pour les boutons d'action */
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin: 0 2px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn.update {
+  background: #3498db;
+  color: white;
+}
+
+.btn.update:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+.btn.delete {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn.delete:hover {
+  background: #c0392b;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
 }

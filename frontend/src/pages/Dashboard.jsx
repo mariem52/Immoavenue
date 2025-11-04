@@ -1,5 +1,7 @@
 // src/pages/Dashboard.jsx
 import React, { useState, useEffect, useCallback } from "react";
+import StatisticsCharts from "../components/StatisticsCharts";
+import UserModal from "../components/UserModal";
 import api from "../services/api";
 import "./Dashboard.css";
 import {
@@ -32,6 +34,8 @@ export default function Dashboard() {
   // Modal
   const [showModal, setShowModal] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   // Filters & search
   const [userSearch, setUserSearch] = useState("");
@@ -82,6 +86,20 @@ export default function Dashboard() {
   }, [fetchData]);
 
   // Modal handlers
+  // Ajoutez avec les autres fonctions
+const openUserModal = (user = null) => {
+  setCurrentUser(user);
+  setShowUserModal(true);
+};
+
+const closeUserModal = () => {
+  setCurrentUser(null);
+  setShowUserModal(false);
+};
+
+const onUserSaved = () => {
+  fetchData(); // Recharger les données
+};
   const openModal = (project = null) => {
     setCurrentProject(project);
     setShowModal(true);
@@ -262,6 +280,7 @@ export default function Dashboard() {
           <>
             {/* Dashboard stats */}
             {activeSection === "dashboard" && (
+               <div className="dashboard-content">
               <div className="stats-cards">
                 <div className="stat-card users">
                   <h3>Utilisateurs</h3>
@@ -284,6 +303,13 @@ export default function Dashboard() {
                   <p>{messages.length}</p>
                 </div>
               </div>
+                 {/* Graphiques et statistiques détaillées */}
+    <StatisticsCharts 
+      projects={projects}
+      reservations={reservations}
+      favoris={favoris}
+    />
+  </div>
             )}
 
             {/* Users */}
@@ -321,6 +347,13 @@ export default function Dashboard() {
                         </td>
                         <td>{new Date(u.createdAt || u.dateCreation).toLocaleDateString()}</td>
                         <td>
+                            <button 
+    className="btn update" 
+    onClick={() => openUserModal(u)} 
+    title="Modifier"
+  >
+    <FaEdit />
+  </button>
                           <button
                             className="btn delete"
                             onClick={() => deleteItem("users", u._id)}
@@ -550,7 +583,14 @@ export default function Dashboard() {
           </>
         )}
       </main>
-
+{/* Ajoutez avant la fermeture de la div principale */}
+{showUserModal && (
+  <UserModal 
+    user={currentUser} 
+    onClose={closeUserModal} 
+    onSaved={onUserSaved} 
+  />
+)}
       {showModal && (
         <ProjectModal project={currentProject} onClose={closeModal} onSaved={onSaved} />
       )}
